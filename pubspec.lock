@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  backdrop:
+    dependency: "direct main"
+    description:
+      name: backdrop
+      sha256: cb7450b465b638835cf5908ee96785dd7d324029beb96fa7a7b6d81216610cda
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -186,3 +194,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
+  flutter: ">=3.0.0"

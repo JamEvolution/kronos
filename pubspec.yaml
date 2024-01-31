@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  backdrop: ^0.9.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -59,8 +60,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/avatarzabun.jpg
+    - images/avataromer.jpg
+    - images/avatarmali.jpg
+    - images/kronosbg1.jpg
+    - images/kronosbg2.jpg
+    - images/kronosLogo.jpeg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
