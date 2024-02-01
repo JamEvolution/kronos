@@ -16,32 +16,28 @@ class CardKronos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Card(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: Icon(
+              leadingIcon,
+            ),
+            title: Text(title),
+            subtitle: Text(subtitle),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              ListTile(
-                leading: Icon(
-                  leadingIcon,
-                ),
-                title: Text(title),
-                subtitle: Text(subtitle),
+              TextButton(
+                onPressed: onPressed,
+                child: const Text('Convert'),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  TextButton(
-                    onPressed: onPressed,
-                    child: const Text('Convert'),
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ),
+              const SizedBox(width: 8),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

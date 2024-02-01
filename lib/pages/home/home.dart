@@ -12,7 +12,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [HomeFront(), AboutFront()];
+  final List<Widget> _pages = [
+    HomeFront(),
+    AboutFront(),
+  ];
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(

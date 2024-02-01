@@ -1,6 +1,7 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
-import 'package:kronos/pages/home/home.dart';
+import 'package:kronos/widgets/aboutfrontlayer.dart';
+import 'package:kronos/widgets/homerfrontlayer.dart';
 
 class About extends StatefulWidget {
   const About({super.key});
@@ -10,8 +11,8 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  int _currentIndex = 0;
-  final List<Widget> _pages = [Home(), About()];
+  int _currentIndex = 1;
+  final List<Widget> _pages = [HomeFront(), AboutFront()];
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
@@ -29,8 +30,26 @@ class _AboutState extends State<About> {
       ),
       backLayer: BackdropNavigationBackLayer(
         items: [
-          ListTile(title: Text("Widget 1")),
-          ListTile(title: Text("Widget 2")),
+          ListTile(
+            title: Text(
+              "Home",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "About",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
         ],
         onTap: (int position) => {setState(() => _currentIndex = position)},
       ),

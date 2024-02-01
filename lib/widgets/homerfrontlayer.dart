@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kronos/pages/home/audiototext.dart';
+import 'package:kronos/pages/home/videototext.dart';
 import 'package:kronos/widgets/CardKronos.dart';
 
 class HomeFront extends StatefulWidget {
@@ -28,6 +30,10 @@ class _HomeFrontState extends State<HomeFront> {
                 'Convert any video of your choice into text with a high accuracy rate.',
             onPressed: () {
               // Butona tıklanınca yapılacak işlemler
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => VideoToTextView()),
+              );
             },
           ),
           CardKronos(
@@ -37,6 +43,10 @@ class _HomeFrontState extends State<HomeFront> {
                 'Convert any audio of your choice into text with a high accuracy rate.',
             onPressed: () {
               // Butona tıklanınca yapılacak işlemler
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AudioToTextView()),
+              );
             },
           ),
         ],
