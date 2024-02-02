@@ -22,32 +22,38 @@ class _HomeFrontState extends State<HomeFront> {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          CardKronos(
-            leadingIcon: Icons.video_library,
-            title: 'Video To Text Convert',
-            subtitle:
-                'Convert any video of your choice into text with a high accuracy rate.',
-            onPressed: () {
-              // Butona tıklanınca yapılacak işlemler
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => VideoToTextView()),
-              );
-            },
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CardKronos(
+              leadingIcon: Icons.video_library,
+              title: 'Video To Text Convert',
+              subtitle:
+                  'Convert any video of your choice into text with a high accuracy rate.',
+              onPressed: () {
+                // Butona tıklanınca yapılacak işlemler
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VideoToTextView()),
+                );
+              },
+            ),
           ),
-          CardKronos(
-            leadingIcon: Icons.audiotrack,
-            title: 'Audio To Text Convert',
-            subtitle:
-                'Convert any audio of your choice into text with a high accuracy rate.',
-            onPressed: () {
-              // Butona tıklanınca yapılacak işlemler
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AudioToTextView()),
-              );
-            },
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CardKronos(
+              leadingIcon: Icons.audiotrack,
+              title: 'Audio To Text Convert',
+              subtitle:
+                  'Convert any audio of your choice into text with a high accuracy rate.',
+              onPressed: () {
+                // Butona tıklanınca yapılacak işlemler
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AudioToTextView()),
+                );
+              },
+            ),
           ),
         ],
       ),

@@ -29,7 +29,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
       backLayer: BackdropNavigationBackLayer(
         items: [
           ListTile(
-            title: Text(
+            title: const Text(
               "Home",
               style: TextStyle(
                 color: Colors.white,
@@ -45,7 +45,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
             },
           ),
           ListTile(
-            title: Text(
+            title: const Text(
               "About",
               style: TextStyle(
                 color: Colors.white,
@@ -69,6 +69,21 @@ class _VideoToTextViewState extends State<VideoToTextView> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
+            padding: const EdgeInsets.only(
+              top: 16,
+            ),
+            child: Expanded(
+              child: Text(
+                "Video To Text Converter",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                ),
+              ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.all(16),
             child: Container(
               decoration: BoxDecoration(
@@ -89,29 +104,29 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                       children: [
                         Expanded(
                           child: OutlinedButton.icon(
-                            label: Text("Choose Local File"),
-                            icon: Icon(Icons.file_upload),
+                            label: const Text("Choose Local File"),
+                            icon: const Icon(Icons.file_upload),
                             style: OutlinedButton.styleFrom(
-                              shape: ContinuousRectangleBorder(),
+                              shape: const ContinuousRectangleBorder(),
                               foregroundColor: Colors.white,
-                              side: BorderSide(
+                              side: const BorderSide(
                                 color: Colors.white,
                               ),
                             ),
                             onPressed: () {},
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: OutlinedButton.icon(
-                            label: Text(
+                            label: const Text(
                               "Record",
                             ),
-                            icon: Icon(Icons.videocam),
+                            icon: const Icon(Icons.videocam),
                             style: OutlinedButton.styleFrom(
-                              shape: ContinuousRectangleBorder(),
+                              shape: const ContinuousRectangleBorder(),
                               foregroundColor: Colors.white,
-                              side: BorderSide(
+                              side: const BorderSide(
                                 color: Colors.white,
                               ),
                             ),
@@ -120,8 +135,8 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
+                    const Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -150,6 +165,35 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Expanded(
+                        child: Text(
+                          "No File Selected",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Expanded(
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            shape: const ContinuousRectangleBorder(),
+                            foregroundColor: Colors.white,
+                            side: const BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: const Text("Continue"),
+                        ),
                       ),
                     ),
                   ],

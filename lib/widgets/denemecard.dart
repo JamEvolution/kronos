@@ -15,7 +15,7 @@ class DivflexWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double minScreenWidth = 350; // Belirli bir pixel eşik değeri
+    double minScreenWidth = 400; // Belirli bir pixel eşik değeri
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -26,7 +26,7 @@ class DivflexWidget extends StatelessWidget {
               color: const Color.fromARGB(200, 24, 32, 35),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: const Color.fromARGB(255, 8, 41, 91),
+                color: Colors.blue,
                 width: 3,
               ),
             ),
@@ -74,7 +74,7 @@ class DivflexWidget extends StatelessWidget {
               color: const Color.fromARGB(200, 24, 32, 35),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: const Color.fromARGB(255, 8, 41, 91),
+                color: Colors.blue,
                 width: 3,
               ),
             ),
