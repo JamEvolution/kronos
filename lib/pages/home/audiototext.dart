@@ -2,6 +2,8 @@ import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:kronos/pages/home/about.dart';
 import 'package:kronos/pages/home/home.dart';
+import 'package:http/http.dart' as http;
+import 'package:file_picker/file_picker.dart';
 
 class AudioToTextView extends StatefulWidget {
   const AudioToTextView({Key? key}) : super(key: key);
@@ -11,6 +13,57 @@ class AudioToTextView extends StatefulWidget {
 }
 
 class _AudioToTextViewState extends State<AudioToTextView> {
+  TextEditingController urlcontoller = TextEditingController();
+  PlatformFile objFile = PlatformFile(name: "No File Selected", size: 0);
+
+  void chooseFileUsingFilePicker() async {
+    //-----pick file by file picker,
+
+    var result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: [
+        'mp3',
+        'mp4',
+        'wav',
+        'wma',
+        'aac',
+        'm4a',
+        'flac',
+      ],
+      withReadStream:
+          true, // this will return PlatformFile object with read stream
+    );
+    if (result != null) {
+      setState(() {
+        objFile = result.files.single;
+      });
+    }
+  }
+
+  void uploadSelectedFile() async {
+    //---Create http package multipart request object
+    final request = http.MultipartRequest(
+      "POST",
+      Uri.parse("https://file.io/"),
+    );
+    //-----add other fields if needed
+    request.fields["id"] = "abc";
+
+    //-----add selected file with request
+    request.files.add(new http.MultipartFile(
+        "file", objFile.readStream!, objFile.size,
+        filename: objFile.name));
+
+    //-------Send request
+    var resp = await request.send();
+
+    //------Read response
+    String result = await resp.stream.bytesToString();
+
+    //-------Your response
+    print(result);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
@@ -113,42 +166,40 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                                 color: Colors.white,
                               ),
                             ),
-                            onPressed: () {},
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            label: const Text(
-                              "Record",
-                            ),
-                            icon: const Icon(Icons.videocam),
-                            style: OutlinedButton.styleFrom(
-                              shape: const ContinuousRectangleBorder(),
-                              foregroundColor: Colors.white,
-                              side: const BorderSide(
-                                color: Colors.white,
-                              ),
-                            ),
-                            onPressed: () {},
+                            onPressed: () => chooseFileUsingFilePicker(),
                           ),
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Expanded(
-                        child: Text(
-                          "No File Selected",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                    if (objFile != Null)
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Expanded(
+                          child: Text(
+                            "File name : ${objFile.name}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
+                    if (objFile != Null)
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Expanded(
+                          child: Text(
+                            "Size : ${(objFile.size) / (1000000)} Mb",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    Container(
                       padding: const EdgeInsets.all(16),
+                      width: double.maxFinite,
                       child: Expanded(
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -159,7 +210,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                               color: Colors.blue,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () => uploadSelectedFile(),
                           child: const Text("Continue"),
                         ),
                       ),
