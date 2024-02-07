@@ -15,7 +15,7 @@ class AboutFront extends StatelessWidget {
           // Eğer ekran genişliği belirli eşik değerinden büyükse, boyutları sabit tut
           return Container(
             width: screenWidth,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('images/kronosbg1.jpg'),
                 fit: BoxFit.cover,
@@ -49,8 +49,8 @@ class AboutFront extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
+                const Padding(
+                  padding: EdgeInsets.all(16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -62,7 +62,7 @@ class AboutFront extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DivflexWidget(
@@ -84,7 +84,7 @@ class AboutFront extends StatelessWidget {
           // Eğer ekran genişliği belirli eşik değerinden küçükse, boyutları esnek tut
           return Container(
             width: screenWidth,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('images/kronosbg1.jpg'),
                 fit: BoxFit.cover,
@@ -116,8 +116,8 @@ class AboutFront extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
+                const Padding(
+                  padding: EdgeInsets.all(16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -129,7 +129,7 @@ class AboutFront extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DivflexWidget(

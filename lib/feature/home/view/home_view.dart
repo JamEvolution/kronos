@@ -1,17 +1,18 @@
-import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
+import 'package:kronos/feature/home/view/mixin/home_view_mixin.dart';
+import 'package:backdrop/backdrop.dart';
 import 'package:kronos/widgets/aboutfrontlayer.dart';
 import 'package:kronos/widgets/homerfrontlayer.dart';
 
-class About extends StatefulWidget {
-  const About({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<About> createState() => _AboutState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _AboutState extends State<About> {
-  int _currentIndex = 1;
+class _HomeViewState extends State<HomeView> with HomeViewMixin {
+  int _currentIndex = 0;
   final List<Widget> _pages = [
     const HomeFront(),
     const AboutFront(),
@@ -29,36 +30,31 @@ class _AboutState extends State<About> {
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 24, 32, 35),
-        actions: const <Widget>[],
       ),
       backLayer: BackdropNavigationBackLayer(
-        items: const [
-          ListTile(
-            title: Text(
-              "Home",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ),
-          ListTile(
-            title: Text(
-              "About",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ),
+        items: [
+          BackdropItem(page: "Home"),
+          BackdropItem(page: "About"),
         ],
         onTap: (int position) => {setState(() => _currentIndex = position)},
       ),
       backLayerBackgroundColor: const Color.fromARGB(255, 24, 32, 35),
       headerHeight: 30.0,
       frontLayer: _pages[_currentIndex],
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  ListTile BackdropItem({String page=""}) {
+    return ListTile(
+      title: Text(
+        page,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontStyle: FontStyle.italic,
+        ),
+      ),
     );
   }
 }
