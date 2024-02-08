@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:kronos/product/utility/constants/app/app_theme.dart';
 
-class CardKronos extends StatelessWidget {
+class HomeCardWidget extends StatelessWidget {
   final IconData leadingIcon;
   final String title;
   final String subtitle;
   final VoidCallback onPressed;
 
-  const CardKronos({
+  const HomeCardWidget({
     Key? key,
     required this.leadingIcon,
     required this.title,
@@ -18,7 +19,7 @@ class CardKronos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(200, 24, 32, 35),
+        color: ThemeColor.cardBackgruondColor,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Colors.blue,
@@ -35,11 +36,11 @@ class CardKronos extends StatelessWidget {
             ),
             title: Text(
               title,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             subtitle: Text(
               subtitle,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           Row(

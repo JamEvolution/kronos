@@ -1,18 +1,20 @@
 import 'package:backdrop/backdrop.dart';
-import 'package:flutter/material.dart';
-import 'package:kronos/pages/home/about.dart';
-import 'package:kronos/pages/home/home.dart';
-import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:kronos/feature/home/view/home_view.dart';
 
-class AudioToTextView extends StatefulWidget {
-  const AudioToTextView({Key? key}) : super(key: key);
+
+import '../../about/view/about_view.dart';
+
+class VideoToTextView extends StatefulWidget {
+  const VideoToTextView({super.key});
 
   @override
-  _AudioToTextViewState createState() => _AudioToTextViewState();
+  State<VideoToTextView> createState() => _VideoToTextViewState();
 }
 
-class _AudioToTextViewState extends State<AudioToTextView> {
+class _VideoToTextViewState extends State<VideoToTextView> {
   TextEditingController urlcontoller = TextEditingController();
   PlatformFile objFile = PlatformFile(name: "No File Selected", size: 0);
 
@@ -22,13 +24,22 @@ class _AudioToTextViewState extends State<AudioToTextView> {
     var result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: [
-        'mp3',
+        'png',
         'mp4',
-        'wav',
-        'wma',
-        'aac',
-        'm4a',
-        'flac',
+        'mov',
+        'mkv',
+        'asf',
+        'avi',
+        'wnmv',
+        'ogv',
+        'dat',
+        'mpeg',
+        'flv',
+        '3gp',
+        'webm',
+        'rm',
+        '3gpp',
+        '3g2',
       ],
       withReadStream:
           true, // this will return PlatformFile object with read stream
@@ -47,12 +58,31 @@ class _AudioToTextViewState extends State<AudioToTextView> {
       Uri.parse("https://file.io/"),
     );
     //-----add other fields if needed
-    request.fields["id"] = "abc";
+    request.fields["title"] = "This is video file";
 
     //-----add selected file with request
-    request.files.add(new http.MultipartFile(
+    request.files.add(http.MultipartFile(
         "file", objFile.readStream!, objFile.size,
         filename: objFile.name));
+
+    //-------Send request
+    var resp = await request.send();
+
+    //------Read response
+    String result = await resp.stream.bytesToString();
+
+    //-------Your response
+    print(result);
+  }
+
+  void uploadYoutbeUrl(String deger) async {
+    //---Create http package multipart request object
+    final request = http.MultipartRequest(
+      "POST",
+      Uri.parse("https://file.io/"),
+    );
+    //-----add other fields if needed
+    request.fields["url"] = deger;
 
     //-------Send request
     var resp = await request.send();
@@ -93,7 +123,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Home()),
+                MaterialPageRoute(builder: (context) => const HomeView()),
               );
             },
           ),
@@ -109,7 +139,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => About()),
+                MaterialPageRoute(builder: (context) => const AboutView()),
               );
             },
           ),
@@ -123,13 +153,13 @@ class _AudioToTextViewState extends State<AudioToTextView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 top: 16,
               ),
               child: Expanded(
                 child: Text(
-                  "Audio To Text Converter",
+                  "Video To Text Converter",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -173,13 +203,48 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                           ),
                         ],
                       ),
+                      if (objFile.size == 0)
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.insert_link,
+                                color: Colors.white,
+                              ),
+                              const Text(
+                                "File URL:",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: TextField(
+                                  keyboardType: TextInputType.url,
+                                  controller: urlcontoller,
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: const InputDecoration(
+                                    labelStyle: TextStyle(color: Colors.white),
+                                    labelText: 'Youtube URL',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    hintText:
+                                        'https://www.youtube.com/watch?v=aLvlqD4QS7Y',
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.zero)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       if (objFile != Null)
                         Padding(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "File name : ${objFile.name}",
-                              style: TextStyle(
+                              "File name : ${objFile.name} ${urlcontoller.text}",
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
@@ -188,11 +253,11 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                         ),
                       if (objFile != Null)
                         Padding(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "Size : ${(objFile.size) / (1000000)} Mb",
-                              style: TextStyle(
+                              "Size : ${(objFile.size) ~/ (1000000)} Mb",
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
@@ -212,7 +277,16 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                                 color: Colors.blue,
                               ),
                             ),
-                            onPressed: () => uploadSelectedFile(),
+                            onPressed: () {
+                              if (objFile.size != 0 &&
+                                  urlcontoller.text == "") {
+                                uploadSelectedFile();
+                              }
+                              if (objFile.size == 0 &&
+                                  urlcontoller.text != "") {
+                                uploadYoutbeUrl(urlcontoller.text);
+                              }
+                            },
                             child: const Text("Continue"),
                           ),
                         ),

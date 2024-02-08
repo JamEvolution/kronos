@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:kronos/feature/home/view/mixin/home_view_mixin.dart';
 import 'package:backdrop/backdrop.dart';
-import 'package:kronos/widgets/aboutfrontlayer.dart';
-import 'package:kronos/widgets/homerfrontlayer.dart';
+import 'package:flutter/material.dart';
+import 'package:kronos/feature/about/view/about_front_view.dart';
+import 'package:kronos/feature/home/view/home_front_view.dart';
+import 'package:kronos/feature/home/view/mixin/home_view_mixin.dart';
+
+
+import '../../../product/utility/constants/app/app_theme.dart';
+import '../../../product/widgets/appbar/backdrop_appbar.dart';
+
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,38 +19,25 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> with HomeViewMixin {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    const HomeFront(),
-    const AboutFront(),
+    const HomeFrontView(),
+    const AboutFrontView(),
   ];
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
-      appBar: BackdropAppBar(
-        elevation: 0,
-        title: Image.asset(
-          "images/kronoslogo.jpeg",
-          fit: BoxFit.contain,
-          height: 220.0,
-          width: 220.0,
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 24, 32, 35),
-      ),
+      appBar: const BackDropAppBarWidget(),
       backLayer: BackdropNavigationBackLayer(
-        items: [
-          BackdropItem(page: "Home"),
-          BackdropItem(page: "About"),
-        ],
+        items: [BackdropItem(page: "Home"), BackdropItem(page: "About")],
         onTap: (int position) => {setState(() => _currentIndex = position)},
       ),
-      backLayerBackgroundColor: const Color.fromARGB(255, 24, 32, 35),
-      headerHeight: 30.0,
+      backLayerBackgroundColor: ThemeColor.backDropBackgroundColor,
+      headerHeight: BackDropTheme.backDropHeaderHeight,
       frontLayer: _pages[_currentIndex],
     );
   }
 
   // ignore: non_constant_identifier_names
-  ListTile BackdropItem({String page=""}) {
+  ListTile BackdropItem({String page = ""}) {
     return ListTile(
       title: Text(
         page,

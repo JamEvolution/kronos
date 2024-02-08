@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:kronos/pages/home/audiototext.dart';
-import 'package:kronos/pages/home/videototext.dart';
-import 'package:kronos/widgets/CardKronos.dart';
+import 'package:kronos/feature/audio_to_text/view/audio_to_text_view.dart';
+import 'package:kronos/product/utility/constants/app/app_theme.dart';
 
-class HomeFront extends StatefulWidget {
-  const HomeFront({super.key});
+import '../../video_to_text/view/video_to_text_view.dart';
+import '_widget/home_card_widget.dart';
+
+class HomeFrontView extends StatefulWidget {
+  const HomeFrontView({super.key});
 
   @override
-  State<HomeFront> createState() => _HomeFrontState();
+  State<HomeFrontView> createState() => _HomeFrontState();
 }
 
-class _HomeFrontState extends State<HomeFront> {
+class _HomeFrontState extends State<HomeFrontView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 44, 55, 66),
+      backgroundColor: ThemeColor.frontBackgruondColor,
       body: Center(
         child: SingleChildScrollView(
           child: Stack(
@@ -25,34 +27,32 @@ class _HomeFrontState extends State<HomeFront> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: CardKronos(
+                    child: HomeCardWidget(
                       leadingIcon: Icons.video_library,
                       title: 'Video To Text Convert',
                       subtitle:
                           'Convert any video of your choice into text with a high accuracy rate.',
                       onPressed: () {
-                        // Butona tıklanınca yapılacak işlemler
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => VideoToTextView()),
+                              builder: (context) => const VideoToTextView()),
                         );
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: CardKronos(
+                    child: HomeCardWidget(
                       leadingIcon: Icons.audiotrack,
                       title: 'Audio To Text Convert',
                       subtitle:
                           'Convert any audio of your choice into text with a high accuracy rate.',
                       onPressed: () {
-                        // Butona tıklanınca yapılacak işlemler
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AudioToTextView()),
+                              builder: (context) => const AudioToTextView()),
                         );
                       },
                     ),

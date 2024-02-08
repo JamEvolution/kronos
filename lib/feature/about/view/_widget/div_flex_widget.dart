@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kronos/product/utility/constants/app/app_theme.dart';
 
 class DivflexWidget extends StatelessWidget {
   const DivflexWidget({
@@ -15,15 +16,13 @@ class DivflexWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double minScreenWidth = 400; // Belirli bir pixel eşik değeri
-
+    double minScreenWidth = 400;
     return LayoutBuilder(
       builder: (context, constraints) {
         if (screenWidth > minScreenWidth) {
-          // Eğer ekran genişliği belirli eşik değerinden büyükse, boyutları sabit tut
           return Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(200, 24, 32, 35),
+              color: ThemeColor.cardBackgruondColor,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: Colors.blue,
@@ -44,7 +43,7 @@ class DivflexWidget extends StatelessWidget {
                   leadingText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: const Color.fromRGBO(249, 250, 251, 1),
+                    color: ThemeColor.textColor,
                     fontFamily: 'Inter',
                     fontSize: minScreenWidth * 0.048,
                     letterSpacing: 0.5,
@@ -58,7 +57,7 @@ class DivflexWidget extends StatelessWidget {
                     subtitleText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: const Color.fromRGBO(249, 250, 251, 1),
+                      color: ThemeColor.textColor,
                       fontFamily: 'Inter',
                       fontSize: minScreenWidth * 0.038,
                       letterSpacing: 0.5,
@@ -71,10 +70,9 @@ class DivflexWidget extends StatelessWidget {
             ),
           );
         } else {
-          // Eğer ekran genişliği belirli eşik değerinden küçükse, boyutları esnek bırak
           return Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(200, 24, 32, 35),
+              color: ThemeColor.cardBackgruondColor,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: Colors.blue,
@@ -95,7 +93,7 @@ class DivflexWidget extends StatelessWidget {
                   leadingText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: const Color.fromRGBO(249, 250, 251, 1),
+                    color: ThemeColor.textColor,
                     fontFamily: 'Inter',
                     fontSize: screenWidth * 0.03,
                     letterSpacing: 0.5,
@@ -109,7 +107,7 @@ class DivflexWidget extends StatelessWidget {
                     subtitleText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: const Color.fromRGBO(249, 250, 251, 1),
+                      color: ThemeColor.textColor,
                       fontFamily: 'Inter',
                       fontSize: screenWidth * 0.02,
                       letterSpacing: 0.5,
