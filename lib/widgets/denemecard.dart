@@ -46,22 +46,25 @@ class DivflexWidget extends StatelessWidget {
                   style: TextStyle(
                     color: const Color.fromRGBO(249, 250, 251, 1),
                     fontFamily: 'Inter',
-                    fontSize: minScreenWidth * 0.05,
+                    fontSize: minScreenWidth * 0.048,
                     letterSpacing: 0.5,
                     fontWeight: FontWeight.normal,
                     height: 1.4,
                   ),
                 ),
-                Text(
-                  subtitleText,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color.fromRGBO(249, 250, 251, 1),
-                    fontFamily: 'Inter',
-                    fontSize: minScreenWidth * 0.04,
-                    letterSpacing: 0.5,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    subtitleText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color.fromRGBO(249, 250, 251, 1),
+                      fontFamily: 'Inter',
+                      fontSize: minScreenWidth * 0.038,
+                      letterSpacing: 0.5,
+                      fontWeight: FontWeight.normal,
+                      height: 1.4,
+                    ),
                   ),
                 ),
               ],
@@ -94,22 +97,25 @@ class DivflexWidget extends StatelessWidget {
                   style: TextStyle(
                     color: const Color.fromRGBO(249, 250, 251, 1),
                     fontFamily: 'Inter',
-                    fontSize: screenWidth * 0.05,
+                    fontSize: screenWidth * 0.03,
                     letterSpacing: 0.5,
                     fontWeight: FontWeight.normal,
                     height: 1.4,
                   ),
                 ),
-                Text(
-                  subtitleText,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color.fromRGBO(249, 250, 251, 1),
-                    fontFamily: 'Inter',
-                    fontSize: screenWidth * 0.04,
-                    letterSpacing: 0.5,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    subtitleText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color.fromRGBO(249, 250, 251, 1),
+                      fontFamily: 'Inter',
+                      fontSize: screenWidth * 0.02,
+                      letterSpacing: 0.5,
+                      fontWeight: FontWeight.normal,
+                      height: 1.4,
+                    ),
                   ),
                 ),
               ],
