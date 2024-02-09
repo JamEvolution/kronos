@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kronos/feature/home/view/home_view.dart';
+import 'package:kronos/product/utility/constants/app/app_constants.dart';
 
 
 import '../../about/view/about_view.dart';
@@ -100,7 +101,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
       appBar: BackdropAppBar(
         elevation: 0,
         title: Image.asset(
-          "images/kronoslogo.jpeg",
+          ApplicationConstants.COMPANY_LOGO,
           fit: BoxFit.contain,
           height: 220.0,
           width: 220.0,

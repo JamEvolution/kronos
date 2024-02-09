@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kronos/feature/audio_to_text/view/audio_to_text_view.dart';
+import 'package:kronos/feature/home/view/_widget/home_card_widget.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
 
 import '../../video_to_text/view/video_to_text_view.dart';
-import '_widget/home_card_widget.dart';
+
+
 
 class HomeFrontView extends StatefulWidget {
   const HomeFrontView({super.key});

@@ -12,12 +12,11 @@ class BackDropAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return BackdropAppBar(
-      elevation: 0,
       title: Image.asset(
         ApplicationConstants.COMPANY_LOGO,
         fit: BoxFit.contain,
-        height: 220.0,
-        width: 220.0,
+        height: 220,
+        width: 220,
       ),
       centerTitle: true,
       backgroundColor: ThemeColor.backDropBackgroundColor,
@@ -25,5 +24,5 @@ class BackDropAppBarWidget extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => const Size.fromHeight(56);
 }

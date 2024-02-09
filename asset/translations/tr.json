@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Ana Sayfa"
+    },
+    "about": {
+        "title": "Hakkında"
+    },
+    "general": {
+        "button": {
+            "save": "Kaydet"
+        },
+        "dialog": {
+            "version": {
+                "title": "Versiyon",
+                "content": "Versiyon Bilgisi"
+            }
+        }
+    }
+}

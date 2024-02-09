@@ -1,13 +1,12 @@
 import 'package:backdrop/backdrop.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kronos/feature/about/view/about_front_view.dart';
 import 'package:kronos/feature/home/view/home_front_view.dart';
 import 'package:kronos/feature/home/view/mixin/home_view_mixin.dart';
-
-
-import '../../../product/utility/constants/app/app_theme.dart';
-import '../../../product/widgets/appbar/backdrop_appbar.dart';
-
+import 'package:kronos/product/init/language/locale_keys.g.dart';
+import 'package:kronos/product/utility/constants/app/app_theme.dart';
+import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -27,7 +26,10 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
     return BackdropScaffold(
       appBar: const BackDropAppBarWidget(),
       backLayer: BackdropNavigationBackLayer(
-        items: [BackdropItem(page: "Home"), BackdropItem(page: "About")],
+        items: [
+          BackdropItem(page: "Home"),
+          BackdropItem(page: "About")
+        ],
         onTap: (int position) => {setState(() => _currentIndex = position)},
       ),
       backLayerBackgroundColor: ThemeColor.backDropBackgroundColor,
@@ -37,7 +39,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
   }
 
   // ignore: non_constant_identifier_names
-  ListTile BackdropItem({String page = ""}) {
+  ListTile BackdropItem({String page = ''}) {
     return ListTile(
       title: Text(
         page,
@@ -46,7 +48,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
           fontSize: 20,
           fontStyle: FontStyle.italic,
         ),
-      ),
+      ).tr(),
     );
   }
 }

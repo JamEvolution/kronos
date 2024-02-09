@@ -30,47 +30,47 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   backdrop: ^0.9.1
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^1.2.0
   file_picker: ^6.1.1
   youtube_explode_dart: ^2.1.0
 
+
+  
+  # Model üretmek için gereken json paketi
+  json_annotation: ^4.8.1
+  # Dosya okuma işini yaparken crypto olarak yapttırtan paket
+  envied: ^0.5.3
+  # Sınıfların mutable olmasını sağlayan paket
+  equatable: ^2.0.5 
+  # State management 
+  flutter_riverpod: ^2.4.10
+  # Dil desteği için paket
+  easy_localization: ^3.0.3
+
+  core:
+    path: module/core
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  very_good_analysis: ^5.1.0
+  # Asset yönetmek için gereken support
+  flutter_gen_runner: ^5.4.0
+  build_runner: ^2.4.8
+  # Bütün platformlardaki icon yönetimi
+  flutter_launcher_icons: ^0.13.1
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/avatarzabun.jpg
-    - images/avataromer.jpg
-    - images/avatarmali.jpg
-    - images/kronosbg1.jpg
-    - images/kronosbg2.jpg
-    - images/kronosLogo.jpeg
-  #   - images/a_dot_ham.jpeg
+    - asset/images/
+    - asset/translations/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
