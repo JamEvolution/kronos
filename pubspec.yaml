@@ -1,59 +1,34 @@
 name: kronos
 description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+publish_to: 'none' 
 version: 1.0.0+1
-
 environment:
   sdk: '>=3.2.6 <4.0.0'
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
 
+  # Core Dependencies
   backdrop: ^0.9.1
   cupertino_icons: ^1.0.2
   http: ^1.2.0
   file_picker: ^6.1.1
   youtube_explode_dart: ^2.1.0
+  equatable: ^2.0.5
 
-
-  
-  # Model üretmek için gereken json paketi
-  json_annotation: ^4.8.1
-  # Dosya okuma işini yaparken crypto olarak yapttırtan paket
-  envied: ^0.5.3
-  # Sınıfların mutable olmasını sağlayan paket
-  equatable: ^2.0.5 
-  # State management 
+  # State 
   flutter_riverpod: ^2.4.10
-  # Dil desteği için paket
-  easy_localization: ^3.0.3
-  kartal: ^3.5.0
 
-  #Utility
+  # Config
+  envied: ^0.5.3
+  json_annotation: ^4.8.1
+  easy_localization: ^3.0.3
+
+  # Utility
   easy_logger: ^0.0.2
   logger: ^2.0.2+1
+  kartal: ^3.5.0
 
   core:
     path: module/core
@@ -62,11 +37,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^5.1.0
-  # Asset yönetmek için gereken support
   flutter_gen_runner: ^5.4.0
   build_runner: ^2.4.8
-  # Bütün platformlardaki icon yönetimi
   flutter_launcher_icons: ^0.13.1
+  envied_generator: ^0.5.3
 
 flutter:
   uses-material-design: true
@@ -76,18 +50,6 @@ flutter:
     - asset/images/
     - asset/translations/
 
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
   # fonts:
   #   - family: Schyler
   #     fonts:

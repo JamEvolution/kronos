@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'about_text_widget.dart';
-import 'div_flex_widget.dart';
+import 'package:kronos/feature/about/view/_widget/about_text_widget.dart';
+import 'package:kronos/feature/about/view/_widget/div_flex_widget.dart';
 
 class LayoutTemplateWidget extends StatelessWidget {
   const LayoutTemplateWidget({
-    super.key,
     required this.size,
+    super.key,
   });
 
   final double size;
@@ -26,8 +26,8 @@ class LayoutTemplateWidget extends StatelessWidget {
                     DivflexWidget(
                       leadingText: 'Murat ZABUN',
                       subtitleText: 'Chief Executive Officer\n(CEO)',
-                      backgroundImage: 'images/avatarzabun.jpg',
-                    )
+                      backgroundImage: 'asset/images/avatarzabun.jpg',
+                    ),
                   ],
                 ),
               ),
@@ -37,12 +37,12 @@ class LayoutTemplateWidget extends StatelessWidget {
                   DivflexWidget(
                     leadingText: 'Omer UMUR',
                     subtitleText: 'Chief Technology Officer\n(CTO)',
-                    backgroundImage: 'images/avataromer.jpg',
+                    backgroundImage: 'asset/images/avataromer.jpg',
                   ),
                   DivflexWidget(
                     leadingText: 'Mehmet Ali SALEP',
                     subtitleText: 'Chief Technology Officer\n(CTO)',
-                    backgroundImage: 'images/avatarmali.jpg',
+                    backgroundImage: 'asset/images/avatarmali.jpg',
                   ),
                 ],
               ),
