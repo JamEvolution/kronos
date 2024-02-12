@@ -20,4 +20,5 @@ final class DevEnv  implements AppConfiguration {
   
   @override
   String get baseUrl => _baseUrl;
+  
 }
