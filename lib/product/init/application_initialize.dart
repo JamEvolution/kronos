@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kartal/kartal.dart';
 import 'package:kronos/product/init/config/app_environment.dart';
-import 'package:kronos/product/init/config/env_dev.dart';
 import 'package:logger/logger.dart';
 
 @immutable

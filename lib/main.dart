@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:kronos/feature/home/view/home_view.dart';
 import 'package:kronos/product/init/application_initialize.dart';
 import 'package:kronos/product/init/product_localization.dart';
+import 'package:kronos/product/init/theme/custom_dark_theme.dart';
+import 'package:kronos/product/init/theme/custom_light_theme.dart';
 import 'package:kronos/product/utility/constants/app/app_constants.dart';
 
-Future <void> main() async {
+Future<void> main() async {
   await ApplicationInitialize().make();
   runApp(ProductLocalization(child: const _MyApp()));
 }
@@ -21,12 +23,8 @@ class _MyApp extends StatelessWidget {
       locale: context.locale,
       debugShowCheckedModeBanner: false,
       title: ApplicationConstants.COMPANY_NAME,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 21, 28, 31),
-        ),
-        useMaterial3: true,
-      ),
+      theme: CustomLightTheme().themeData,
+      darkTheme: CustomDarkTheme().themeData,
       home: const HomeView(),
     );
   }
