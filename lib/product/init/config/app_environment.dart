@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:kronos/product/init/config/app_configuration.dart';
-import 'package:kronos/product/init/config/env_dev.dart';
-import 'package:kronos/product/init/config/prod_env.dart';
+import 'package:gen/gen.dart';
+
 
 /// Application environment manager class
 final class AppEnvironment {

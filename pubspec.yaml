@@ -22,8 +22,6 @@ dependencies:
   flutter_riverpod: ^2.4.10
 
   # Config
-  envied: ^0.5.3
-  json_annotation: ^4.8.1
   easy_localization: ^3.0.3
 
   # Utility
@@ -33,15 +31,25 @@ dependencies:
 
   core:
     path: module/core
+  
+  gen:
+    path: module/gen
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^5.1.0
-  flutter_gen_runner: ^5.4.0
-  build_runner: ^2.4.8
   flutter_launcher_icons: ^0.13.1
-  envied_generator: ^0.5.3
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app/app_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
+
+
 
 flutter:
   uses-material-design: true
