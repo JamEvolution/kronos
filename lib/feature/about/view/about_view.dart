@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kronos/feature/about/view/about_front_view.dart';
 import 'package:kronos/feature/home/view/home_front_view.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
-
-import '../../../product/widgets/appbar/backdrop_appbar.dart';
+import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
 class AboutView extends StatefulWidget {
   const AboutView({super.key});
@@ -24,7 +23,7 @@ class _AboutViewState extends State<AboutView> {
     return BackdropScaffold(
       appBar: const BackDropAppBarWidget(),
       backLayer: BackdropNavigationBackLayer(
-        items: [BackdropItem(page: "Home"), BackdropItem(page: "About")],
+        items: [BackdropItem(page: 'Home'), BackdropItem(page: 'About')],
         onTap: (int position) => {setState(() => _currentIndex = position)},
       ),
       backLayerBackgroundColor: ThemeColor.backDropBackgroundColor,

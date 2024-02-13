@@ -2,11 +2,9 @@ import 'package:backdrop/backdrop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:kronos/feature/about/view/about_view.dart';
 import 'package:kronos/feature/home/view/home_view.dart';
-import 'package:kronos/product/utility/constants/app/app_constants.dart';
-
-
-import '../../about/view/about_view.dart';
+import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
 class VideoToTextView extends StatefulWidget {
   const VideoToTextView({super.key});
@@ -17,12 +15,12 @@ class VideoToTextView extends StatefulWidget {
 
 class _VideoToTextViewState extends State<VideoToTextView> {
   TextEditingController urlcontoller = TextEditingController();
-  PlatformFile objFile = PlatformFile(name: "No File Selected", size: 0);
+  PlatformFile objFile = PlatformFile(name: 'No File Selected', size: 0);
 
-  void chooseFileUsingFilePicker() async {
+  Future<void> chooseFileUsingFilePicker() async {
     //-----pick file by file picker,
 
-    var result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: [
         'png',
@@ -52,44 +50,49 @@ class _VideoToTextViewState extends State<VideoToTextView> {
     }
   }
 
-  void uploadSelectedFile() async {
+  Future<void> uploadSelectedFile() async {
     //---Create http package multipart request object
     final request = http.MultipartRequest(
-      "POST",
-      Uri.parse("https://file.io/"),
+      'POST',
+      Uri.parse('https://file.io/'),
     );
     //-----add other fields if needed
-    request.fields["title"] = "This is video file";
+    request.fields['title'] = 'This is video file';
 
     //-----add selected file with request
-    request.files.add(http.MultipartFile(
-        "file", objFile.readStream!, objFile.size,
-        filename: objFile.name));
+    request.files.add(
+      http.MultipartFile(
+        'file',
+        objFile.readStream!,
+        objFile.size,
+        filename: objFile.name,
+      ),
+    );
 
     //-------Send request
-    var resp = await request.send();
+    final resp = await request.send();
 
     //------Read response
-    String result = await resp.stream.bytesToString();
+    final result = await resp.stream.bytesToString();
 
     //-------Your response
     print(result);
   }
 
-  void uploadYoutbeUrl(String deger) async {
+  Future<void> uploadYoutbeUrl(String deger) async {
     //---Create http package multipart request object
     final request = http.MultipartRequest(
-      "POST",
-      Uri.parse("https://file.io/"),
+      'POST',
+      Uri.parse('https://file.io/'),
     );
     //-----add other fields if needed
-    request.fields["url"] = deger;
+    request.fields['url'] = deger;
 
     //-------Send request
-    var resp = await request.send();
+    final resp = await request.send();
 
     //------Read response
-    String result = await resp.stream.bytesToString();
+    final result = await resp.stream.bytesToString();
 
     //-------Your response
     print(result);
@@ -98,23 +101,12 @@ class _VideoToTextViewState extends State<VideoToTextView> {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
-      appBar: BackdropAppBar(
-        elevation: 0,
-        title: Image.asset(
-          ApplicationConstants.COMPANY_LOGO,
-          fit: BoxFit.contain,
-          height: 220.0,
-          width: 220.0,
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 24, 32, 35),
-        actions: const <Widget>[],
-      ),
+      appBar: const BackDropAppBarWidget(),
       backLayer: BackdropNavigationBackLayer(
         items: [
           ListTile(
             title: const Text(
-              "Home",
+              'Home',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -130,7 +122,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
           ),
           ListTile(
             title: const Text(
-              "About",
+              'About',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -147,12 +139,11 @@ class _VideoToTextViewState extends State<VideoToTextView> {
         ],
       ),
       backLayerBackgroundColor: const Color.fromARGB(255, 24, 32, 35),
-      headerHeight: 30.0,
+      headerHeight: 30,
       frontLayerBackgroundColor: const Color.fromARGB(255, 44, 55, 66),
       frontLayer: SingleChildScrollView(
         reverse: true,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.only(
@@ -160,7 +151,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
               ),
               child: Expanded(
                 child: Text(
-                  "Video To Text Converter",
+                  'Video To Text Converter',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -181,16 +172,15 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.all(32),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: OutlinedButton.icon(
-                              label: const Text("Choose Local File"),
+                              label: const Text('Choose Local File'),
                               icon: const Icon(Icons.file_upload),
                               style: OutlinedButton.styleFrom(
                                 shape: const ContinuousRectangleBorder(),
@@ -199,14 +189,14 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () => chooseFileUsingFilePicker(),
+                              onPressed: chooseFileUsingFilePicker,
                             ),
                           ),
                         ],
                       ),
                       if (objFile.size == 0)
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -215,7 +205,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                                 color: Colors.white,
                               ),
                               const Text(
-                                "File URL:",
+                                'File URL:',
                                 style: TextStyle(color: Colors.white),
                               ),
                               const SizedBox(width: 16),
@@ -231,8 +221,9 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                                     hintText:
                                         'https://www.youtube.com/watch?v=aLvlqD4QS7Y',
                                     border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.zero)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.zero),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -244,7 +235,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                           padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "File name : ${objFile.name} ${urlcontoller.text}",
+                              'File name : ${objFile.name} ${urlcontoller.text}',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -257,7 +248,7 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                           padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "Size : ${(objFile.size) ~/ (1000000)} Mb",
+                              'Size : ${(objFile.size) ~/ (1000000)} Mb',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -280,15 +271,15 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                             ),
                             onPressed: () {
                               if (objFile.size != 0 &&
-                                  urlcontoller.text == "") {
+                                  urlcontoller.text == '') {
                                 uploadSelectedFile();
                               }
                               if (objFile.size == 0 &&
-                                  urlcontoller.text != "") {
+                                  urlcontoller.text != '') {
                                 uploadYoutbeUrl(urlcontoller.text);
                               }
                             },
-                            child: const Text("Continue"),
+                            child: const Text('Continue'),
                           ),
                         ),
                       ),

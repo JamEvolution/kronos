@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kronos/feature/about/view/about_view.dart';
 import 'package:kronos/feature/home/view/home_view.dart';
-
+import 'package:kronos/feature/loading/view/loading_view.dart';
+import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
 class AudioToTextView extends StatefulWidget {
-  const AudioToTextView({Key? key}) : super(key: key);
+  const AudioToTextView({super.key});
 
   @override
   _AudioToTextViewState createState() => _AudioToTextViewState();
@@ -15,10 +16,10 @@ class AudioToTextView extends StatefulWidget {
 
 class _AudioToTextViewState extends State<AudioToTextView> {
   TextEditingController urlcontoller = TextEditingController();
-  PlatformFile objFile = PlatformFile(name: "No File Selected", size: 0);
+  PlatformFile objFile = PlatformFile(name: 'No File Selected', size: 0);
 
-  void chooseFileUsingFilePicker() async {
-    var result = await FilePicker.platform.pickFiles(
+  Future<void> chooseFileUsingFilePicker() async {
+    final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: [
         'mp3',
@@ -39,25 +40,30 @@ class _AudioToTextViewState extends State<AudioToTextView> {
     }
   }
 
-  void uploadSelectedFile() async {
+  Future<void> uploadSelectedFile() async {
     //---Create http package multipart request object
     final request = http.MultipartRequest(
-      "POST",
-      Uri.parse("https://file.io/"),
+      'POST',
+      Uri.parse('https://file.io/'),
     );
     //-----add other fields if needed
-    request.fields["id"] = "abc";
+    request.fields['id'] = 'abc';
 
     //-----add selected file with request
-    request.files.add(http.MultipartFile(
-        "file", objFile.readStream!, objFile.size,
-        filename: objFile.name));
+    request.files.add(
+      http.MultipartFile(
+        'file',
+        objFile.readStream!,
+        objFile.size,
+        filename: objFile.name,
+      ),
+    );
 
     //-------Send request
-    var resp = await request.send();
+    final resp = await request.send();
 
     //------Read response
-    String result = await resp.stream.bytesToString();
+    final result = await resp.stream.bytesToString();
 
     //-------Your response
     print(result);
@@ -66,23 +72,12 @@ class _AudioToTextViewState extends State<AudioToTextView> {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
-      appBar: BackdropAppBar(
-        elevation: 0,
-        title: Image.asset(
-          "images/kronoslogo.jpeg",
-          fit: BoxFit.contain,
-          height: 220.0,
-          width: 220.0,
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 24, 32, 35),
-        actions: const <Widget>[],
-      ),
+      appBar: const BackDropAppBarWidget(),
       backLayer: BackdropNavigationBackLayer(
         items: [
           ListTile(
             title: const Text(
-              "Home",
+              'Home',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -98,7 +93,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
           ),
           ListTile(
             title: const Text(
-              "About",
+              'About',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -115,12 +110,11 @@ class _AudioToTextViewState extends State<AudioToTextView> {
         ],
       ),
       backLayerBackgroundColor: const Color.fromARGB(255, 24, 32, 35),
-      headerHeight: 30.0,
+      headerHeight: 30,
       frontLayerBackgroundColor: const Color.fromARGB(255, 44, 55, 66),
       frontLayer: SingleChildScrollView(
         reverse: true,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.only(
@@ -128,7 +122,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
               ),
               child: Expanded(
                 child: Text(
-                  "Audio To Text Converter",
+                  'Audio To Text Converter',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -149,16 +143,15 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.all(32),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: OutlinedButton.icon(
-                              label: const Text("Choose Local File"),
+                              label: const Text('Choose Local File'),
                               icon: const Icon(Icons.file_upload),
                               style: OutlinedButton.styleFrom(
                                 shape: const ContinuousRectangleBorder(),
@@ -167,7 +160,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () => chooseFileUsingFilePicker(),
+                              onPressed: chooseFileUsingFilePicker,
                             ),
                           ),
                         ],
@@ -177,7 +170,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                           padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "File name : ${objFile.name}",
+                              'File name : ${objFile.name}',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -190,7 +183,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                           padding: const EdgeInsets.all(16),
                           child: Expanded(
                             child: Text(
-                              "Size : ${(objFile.size) / (1000000)} Mb",
+                              'Size : ${(objFile.size) / (1000000)} Mb',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -211,8 +204,15 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                                 color: Colors.blue,
                               ),
                             ),
-                            onPressed: () => uploadSelectedFile(),
-                            child: const Text("Continue"),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoadingView(),
+                                ),
+                              );
+                            },
+                            child: const Text('Continue'),
                           ),
                         ),
                       ),
