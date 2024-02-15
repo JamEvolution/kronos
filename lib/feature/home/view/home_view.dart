@@ -8,7 +8,8 @@ import 'package:kronos/product/init/language/locale_keys.g.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
 import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
-class HomeView extends StatefulWidget {
+
+final class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override

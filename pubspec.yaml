@@ -16,7 +16,7 @@ dependencies:
   file_picker: ^6.1.1
   youtube_explode_dart: ^2.1.0
   equatable: ^2.0.5
-  google_fonts: ^6.1.0
+  
 
   # State 
   flutter_riverpod: ^2.4.10
@@ -28,6 +28,10 @@ dependencies:
   easy_logger: ^0.0.2
   logger: ^2.0.2+1
   kartal: ^3.5.0
+  google_fonts: ^6.1.0
+
+  # Navigation
+  auto_route: ^7.8.4
 
   core:
     path: module/core
@@ -41,6 +45,9 @@ dev_dependencies:
     sdk: flutter
   very_good_analysis: ^5.1.0
   flutter_launcher_icons: ^0.13.1
+  auto_route_generator: ^7.3.2
+  build_runner: ^2.4.8
+
 
 flutter_launcher_icons:
   android: "launcher_icon"
