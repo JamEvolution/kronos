@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kronos/feature/about/view/_widget/about_text_widget.dart';
 import 'package:kronos/feature/about/view/_widget/div_flex_widget.dart';
 
-class LayoutTemplateWidget extends StatelessWidget {
+final class LayoutTemplateWidget extends StatelessWidget {
   const LayoutTemplateWidget({
     required this.size,
     super.key,

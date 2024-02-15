@@ -1,12 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:backdrop/backdrop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:kronos/feature/about/view/about_view.dart';
-import 'package:kronos/feature/home/view/home_view.dart';
 import 'package:kronos/feature/loading/view/loading_view.dart';
+import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
+@RoutePage()
 class AudioToTextView extends StatefulWidget {
   const AudioToTextView({super.key});
 
@@ -85,10 +86,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
               ),
             ),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeView()),
-              );
+              context.router.push(const HomeRoute());
             },
           ),
           ListTile(
@@ -101,10 +99,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
               ),
             ),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AboutView()),
-              );
+              context.router.push(const AboutRoute());
             },
           ),
         ],
@@ -227,3 +222,5 @@ class _AudioToTextViewState extends State<AudioToTextView> {
     );
   }
 }
+
+class Context {}

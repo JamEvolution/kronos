@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
 import '_widget/layout_template_widget.dart';
 
-class AboutFrontView extends StatelessWidget {
+@RoutePage()
+final class AboutFrontView extends StatelessWidget {
   const AboutFrontView({Key? key}) : super(key: key);
 
   @override

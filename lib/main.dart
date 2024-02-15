@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kronos/feature/home/view/home_view.dart';
 import 'package:kronos/product/init/application_initialize.dart';
 import 'package:kronos/product/init/product_localization.dart';
 import 'package:kronos/product/init/theme/custom_dark_theme.dart';
 import 'package:kronos/product/init/theme/custom_light_theme.dart';
+import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/utility/constants/app/app_constants.dart';
 
 Future<void> main() async {
@@ -12,12 +12,12 @@ Future<void> main() async {
   runApp(ProductLocalization(child: const _MyApp()));
 }
 
-class _MyApp extends StatelessWidget {
+final class _MyApp extends StatelessWidget {
   const _MyApp();
-
+  static final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -25,7 +25,7 @@ class _MyApp extends StatelessWidget {
       title: ApplicationConstants.COMPANY_NAME,
       theme: CustomLightTheme().themeData,
       darkTheme: CustomDarkTheme().themeData,
-      home: const HomeView(),
+      routerConfig: _appRouter.config(),
     );
   }
 }

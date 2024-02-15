@@ -1,11 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:kronos/feature/audio_to_text/view/audio_to_text_view.dart';
 import 'package:kronos/feature/home/view/_widget/home_card_widget.dart';
-import 'package:kronos/feature/video_to_text/view/video_to_text_view.dart';
+import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
 
-class HomeFrontView extends StatefulWidget {
-  const HomeFrontView({super.key});
+@RoutePage()
+
+/// HomeFront layer view
+final class HomeFrontView extends StatefulWidget {
+  /// HomeFront constructor
+  const HomeFrontView({required this.deneme, super.key});
+
+  final String deneme;
 
   @override
   State<HomeFrontView> createState() => _HomeFrontState();
@@ -32,12 +38,8 @@ class _HomeFrontState extends State<HomeFrontView> {
                       subtitle:
                           'Convert any video of your choice into text with a high accuracy rate.',
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const VideoToTextView(),
-                          ),
-                        );
+                        /// will be Type use await
+                        context.router.push(const VideoToTextRoute());
                       },
                     ),
                   ),
@@ -49,12 +51,7 @@ class _HomeFrontState extends State<HomeFrontView> {
                       subtitle:
                           'Convert any audio of your choice into text with a high accuracy rate.',
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AudioToTextView(),
-                          ),
-                        );
+                        context.router.push(const AudioToTextRoute());
                       },
                     ),
                   ),
