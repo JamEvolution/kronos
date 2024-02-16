@@ -144,14 +144,12 @@ class _VideoToTextViewState extends State<VideoToTextView> {
               padding: EdgeInsets.only(
                 top: 16,
               ),
-              child: Expanded(
-                child: Text(
-                  'Video To Text Converter',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                  ),
+              child: Text(
+                'Video To Text Converter',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
                 ),
               ),
             ),
@@ -159,7 +157,6 @@ class _VideoToTextViewState extends State<VideoToTextView> {
               padding: const EdgeInsets.all(16),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(0, 24, 32, 35),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: Colors.white,
@@ -228,54 +225,46 @@ class _VideoToTextViewState extends State<VideoToTextView> {
                       if (objFile != Null)
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Expanded(
-                            child: Text(
-                              'File name : ${objFile.name} ${urlcontoller.text}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                          child: Text(
+                            'File name : ${objFile.name} ${urlcontoller.text}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       if (objFile != Null)
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Expanded(
-                            child: Text(
-                              'Size : ${(objFile.size) ~/ (1000000)} Mb',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                          child: Text(
+                            'Size : ${(objFile.size) ~/ (1000000)} Mb',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       Container(
                         padding: const EdgeInsets.all(16),
                         width: double.maxFinite,
-                        child: Expanded(
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape: const ContinuousRectangleBorder(),
-                              foregroundColor: Colors.white,
-                              side: const BorderSide(
-                                color: Colors.blue,
-                              ),
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            shape: const ContinuousRectangleBorder(),
+                            foregroundColor: Colors.white,
+                            side: const BorderSide(
+                              color: Colors.blue,
                             ),
-                            onPressed: () {
-                              if (objFile.size != 0 &&
-                                  urlcontoller.text == '') {
-                                uploadSelectedFile();
-                              }
-                              if (objFile.size == 0 &&
-                                  urlcontoller.text != '') {
-                                uploadYoutbeUrl(urlcontoller.text);
-                              }
-                            },
-                            child: const Text('Continue'),
                           ),
+                          onPressed: () {
+                            if (objFile.size != 0 && urlcontoller.text == '') {
+                              uploadSelectedFile();
+                            }
+                            if (objFile.size == 0 && urlcontoller.text != '') {
+                              uploadYoutbeUrl(urlcontoller.text);
+                            }
+                          },
+                          child: const Text('Continue'),
                         ),
                       ),
                     ],

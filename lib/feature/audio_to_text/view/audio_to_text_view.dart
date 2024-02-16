@@ -16,7 +16,7 @@ class AudioToTextView extends StatefulWidget {
 }
 
 class _AudioToTextViewState extends State<AudioToTextView> {
-  TextEditingController urlcontoller = TextEditingController();
+  TextEditingController urlController = TextEditingController();
   PlatformFile objFile = PlatformFile(name: 'No File Selected', size: 0);
 
   Future<void> chooseFileUsingFilePicker() async {
@@ -31,8 +31,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
         'm4a',
         'flac',
       ],
-      withReadStream:
-          true, // this will return PlatformFile object with read stream
+      withReadStream: true,
     );
     if (result != null) {
       setState(() {
@@ -42,15 +41,12 @@ class _AudioToTextViewState extends State<AudioToTextView> {
   }
 
   Future<void> uploadSelectedFile() async {
-    //---Create http package multipart request object
     final request = http.MultipartRequest(
       'POST',
       Uri.parse('https://file.io/'),
     );
-    //-----add other fields if needed
     request.fields['id'] = 'abc';
 
-    //-----add selected file with request
     request.files.add(
       http.MultipartFile(
         'file',
@@ -60,13 +56,8 @@ class _AudioToTextViewState extends State<AudioToTextView> {
       ),
     );
 
-    //-------Send request
     final resp = await request.send();
-
-    //------Read response
     final result = await resp.stream.bytesToString();
-
-    //-------Your response
     print(result);
   }
 
@@ -112,17 +103,13 @@ class _AudioToTextViewState extends State<AudioToTextView> {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(
-                top: 16,
-              ),
-              child: Expanded(
-                child: Text(
-                  'Audio To Text Converter',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                  ),
+              padding: EdgeInsets.only(top: 16),
+              child: Text(
+                'Audio To Text Converter',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
                 ),
               ),
             ),
@@ -130,7 +117,6 @@ class _AudioToTextViewState extends State<AudioToTextView> {
               padding: const EdgeInsets.all(16),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(0, 24, 32, 35),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: Colors.white,
@@ -163,52 +149,46 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                       if (objFile != Null)
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Expanded(
-                            child: Text(
-                              'File name : ${objFile.name}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                          child: Text(
+                            'File name : ${objFile.name}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       if (objFile != Null)
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Expanded(
-                            child: Text(
-                              'Size : ${(objFile.size) / (1000000)} Mb',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                          child: Text(
+                            'Size : ${(objFile.size) / (1000000)} Mb',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       Container(
                         padding: const EdgeInsets.all(16),
                         width: double.maxFinite,
-                        child: Expanded(
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape: const ContinuousRectangleBorder(),
-                              foregroundColor: Colors.white,
-                              side: const BorderSide(
-                                color: Colors.blue,
-                              ),
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            shape: const ContinuousRectangleBorder(),
+                            foregroundColor: Colors.white,
+                            side: const BorderSide(
+                              color: Colors.blue,
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoadingView(),
-                                ),
-                              );
-                            },
-                            child: const Text('Continue'),
                           ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoadingView(),
+                              ),
+                            );
+                          },
+                          child: const Text('Continue'),
                         ),
                       ),
                     ],
