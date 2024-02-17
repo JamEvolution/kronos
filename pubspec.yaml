@@ -33,11 +33,18 @@ dependencies:
   # Navigation
   auto_route: ^7.8.4
 
+  # Modules
   core:
     path: module/core
   
   gen:
     path: module/gen
+  
+  common:
+    path: module/common
+  
+  uiwidget:
+    path: module/uiwidget
 
 
 dev_dependencies:
