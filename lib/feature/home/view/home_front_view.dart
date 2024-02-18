@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kronos/feature/home/view/_widget/home_card_widget.dart';
 import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
+import 'package:uiwidget/uiwidget.dart';
 
 @RoutePage()
 
@@ -32,15 +33,38 @@ class _HomeFrontState extends State<HomeFrontView> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: HomeCardWidget(
-                      leadingIcon: Icons.video_library,
-                      title: 'Video To Text Convert',
-                      subtitle:
-                          'Convert any video of your choice into text with a high accuracy rate.',
-                      onPressed: () {
-                        /// will be Type use await
-                        context.router.push(const VideoToTextRoute());
-                      },
+                    /// Kanka responsive widgetim bu modüle ui widgetten geliyor bu !!!!
+                    child: AdaptAllView(
+                      phone: HomeCardWidget(
+                        leadingIcon: Icons.video_library,
+                        title: 'Video To Text Convert',
+                        subtitle:
+                            'Convert any video of your choice into text with a high accuracy rate.',
+                        onPressed: () {
+                          /// will be Type use await
+                          context.router.push(const VideoToTextRoute());
+                        },
+                      ),
+                      tablet: HomeCardWidget(
+                        leadingIcon: Icons.video_library,
+                        title: 'Video To Text Convert',
+                        subtitle:
+                            'Convert any video of your choice into text with a high accuracy rate.',
+                        onPressed: () {
+                          /// will be Type use await
+                          context.router.push(const VideoToTextRoute());
+                        },
+                      ),
+                      desktop: HomeCardWidget(
+                        leadingIcon: Icons.video_library,
+                        title: 'Video To Text Convert',
+                        subtitle:
+                            'Convert any video of your choice into text with a high accuracy rate.',
+                        onPressed: () {
+                          /// will be Type use await
+                          context.router.push(const VideoToTextRoute());
+                        },
+                      ),
                     ),
                   ),
                   Padding(

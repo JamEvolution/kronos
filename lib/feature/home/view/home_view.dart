@@ -2,14 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:backdrop/backdrop.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:kronos/feature/about/view/about_front_view.dart';
 import 'package:kronos/feature/home/view/home_front_view.dart';
 import 'package:kronos/feature/home/view/mixin/home_view_mixin.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
 import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
 
-@RoutePage() 
-/// 
+@RoutePage()
+
+/// Home view
 final class HomeView extends StatefulWidget {
   ///Home View constructor
   const HomeView({super.key});
@@ -21,7 +23,9 @@ final class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> with HomeViewMixin {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    const HomeFrontView(deneme: '',),
+    const HomeFrontView(
+      deneme: '',
+    ),
     const AboutFrontView(),
   ];
   @override
@@ -46,11 +50,8 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
     return ListTile(
       title: Text(
         page,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontStyle: FontStyle.italic,
-        ),
+        style: context.general.textTheme.titleLarge
+            ?.copyWith(color: Colors.white, fontStyle: FontStyle.italic),
       ).tr(),
     );
   }

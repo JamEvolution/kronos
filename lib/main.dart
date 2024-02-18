@@ -6,6 +6,7 @@ import 'package:kronos/product/init/theme/custom_dark_theme.dart';
 import 'package:kronos/product/init/theme/custom_light_theme.dart';
 import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/utility/constants/app/app_constants.dart';
+import 'package:uiwidget/uiwidget.dart';
 
 Future<void> main() async {
   await ApplicationInitialize().make();
@@ -18,6 +19,7 @@ final class _MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      builder: CustomResponsive.build,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
