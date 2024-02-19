@@ -22,6 +22,11 @@ class _HomeFrontState extends State<HomeFrontView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          SuccessDialog.show(title: 'Example', context: context);
+        },
+      ),
       backgroundColor: ThemeColor.frontBackgruondColor,
       body: Center(
         child: SingleChildScrollView(
@@ -33,6 +38,7 @@ class _HomeFrontState extends State<HomeFrontView> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16),
+
                     /// Kanka responsive widgetim bu modüle ui widgetten geliyor bu !!!!
                     child: AdaptAllView(
                       phone: HomeCardWidget(
