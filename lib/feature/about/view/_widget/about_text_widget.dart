@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:kronos/product/utility/constants/app/app_constants.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
+import 'package:kronos/product/widgets/padding/project_paddig.dart';
 
 class AboutTextWidget extends StatelessWidget {
   final double size;
 
   const AboutTextWidget({
-    Key? key,
-    required this.size,
+    required this.size, Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const ProjectPadding.allMedium(),
       child: Container(
         decoration: BoxDecoration(
           color: ThemeColor.cardBackgruondColor,
@@ -24,7 +24,7 @@ class AboutTextWidget extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const ProjectPadding.allSmall(),
           child: Text(
             ApplicationConstants.COMPANY_ABOUT,
             style: TextStyle(

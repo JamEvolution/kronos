@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kronos/product/utility/constants/app/app_theme.dart';
+import 'package:kronos/product/widgets/padding/project_paddig.dart';
 
 class DivflexWidget extends StatelessWidget {
   const DivflexWidget({
@@ -52,7 +53,7 @@ class DivflexWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const ProjectPadding.allSmall(),
                   child: Text(
                     subtitleText,
                     textAlign: TextAlign.center,
@@ -102,7 +103,7 @@ class DivflexWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const ProjectPadding.allSmall(),
                   child: Text(
                     subtitleText,
                     textAlign: TextAlign.center,

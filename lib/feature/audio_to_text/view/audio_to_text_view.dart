@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:kronos/feature/loading/view/loading_view.dart';
 import 'package:kronos/product/navigation/app_router.dart';
 import 'package:kronos/product/widgets/appbar/backdrop_appbar.dart';
+import 'package:kronos/product/widgets/padding/project_paddig.dart';
 
 @RoutePage()
 class AudioToTextView extends StatefulWidget {
@@ -114,7 +115,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const ProjectPadding.allMedium(),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -124,7 +125,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(32),
+                  padding: const ProjectPadding.allLarge(),
                   child: Column(
                     children: [
                       Row(
@@ -148,7 +149,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                       ),
                       if (objFile != Null)
                         Padding(
-                          padding: const EdgeInsets.all(16),
+                          padding: const ProjectPadding.allMedium(),
                           child: Text(
                             'File name : ${objFile.name}',
                             style: const TextStyle(
@@ -159,7 +160,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                         ),
                       if (objFile != Null)
                         Padding(
-                          padding: const EdgeInsets.all(16),
+                          padding: const ProjectPadding.allMedium(),
                           child: Text(
                             'Size : ${(objFile.size) / (1000000)} Mb',
                             style: const TextStyle(
@@ -169,7 +170,7 @@ class _AudioToTextViewState extends State<AudioToTextView> {
                           ),
                         ),
                       Container(
-                        padding: const EdgeInsets.all(16),
+                        padding: const ProjectPadding.allMedium(),
                         width: double.maxFinite,
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
